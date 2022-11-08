@@ -37,6 +37,8 @@ public class ListController {
 
     @GetMapping(value = "")
     public String list(Model model) {
+        //Be sure to check in ListController to find the variable names available to the template.
+        model.addAttribute("all",JobData.findAll());
         model.addAttribute("columns", columnChoices);
         model.addAttribute("tableChoices", tableChoices);
         model.addAttribute("employers", JobData.getAllEmployers());
