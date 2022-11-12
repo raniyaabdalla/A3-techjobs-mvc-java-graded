@@ -29,6 +29,8 @@ public class ListController {
         columnChoices.put("positionType", "Position Type");
         columnChoices.put("coreCompetency", "Skill");
 
+
+       // tableChoices.put("all", "View All");
         tableChoices.put("employer", JobData.getAllEmployers());
         tableChoices.put("location", JobData.getAllLocations());
         tableChoices.put("positionType", JobData.getAllPositionTypes());
@@ -38,7 +40,7 @@ public class ListController {
     @GetMapping(value = "")
     public String list(Model model) {
         //Be sure to check in ListController to find the variable names available to the template.
-        model.addAttribute("all",JobData.findAll());
+        //model.addAttribute("all",JobData.findAll());
         model.addAttribute("columns", columnChoices);
         model.addAttribute("tableChoices", tableChoices);
         model.addAttribute("employers", JobData.getAllEmployers());
@@ -60,6 +62,7 @@ public class ListController {
             model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         }
         model.addAttribute("jobs", jobs);
+
 
         return "list-jobs";
     }
